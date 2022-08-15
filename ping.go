@@ -438,6 +438,10 @@ func (p *Pinger) run(conn packetConn) error {
 		handler()
 	}
 
+	if p.ResetOnRun {
+		p.Reset()
+	}
+
 	var g errgroup.Group
 
 	g.Go(func() error {
